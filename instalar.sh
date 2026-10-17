@@ -13,7 +13,7 @@ import shutil
 
 DIR = os.environ.get("CATALOGO_DIR", "/storage/catalogo")
 ROMS = os.environ.get("ROMS_DIR", "/storage/roms")
-RAIZ = os.path.join(ROMS, "ports", "Catalogo")
+RAIZ = os.path.join(ROMS, "ports_scripts", "Catalogo")
 NOMBRES = {"nes": "NES", "snes": "SNES", "atarilynx": "Atari Lynx"}
 
 
@@ -52,11 +52,17 @@ import shutil
 import subprocess
 import sys
 import time
+import zipfile
 
 DIR = os.environ.get("CATALOGO_DIR", "/storage/catalogo")
 ROMS = os.environ.get("ROMS_DIR", "/storage/roms")
 LOG = os.path.join(DIR, "log.txt")
 EXT = {"nes": ".nes", "snes": ".sfc", "atarilynx": ".lnx"}
+VALIDAS = {
+    "nes": (".nes", ".unf", ".unif", ".fds"),
+    "snes": (".sfc", ".smc", ".fig", ".swc", ".bs", ".st", ".bin"),
+    "atarilynx": (".lnx", ".lyx", ".o"),
+}
 
 
 def log(m):
@@ -117,6 +123,17 @@ def main():
         os.remove(tmp)
         return
     ext = ".zip" if cab[:2] == b"PK" else EXT.get(sistema, ".bin")
+    if ext == ".zip" and sistema in VALIDAS:
+        try:
+            dentro = zipfile.ZipFile(tmp).namelist()
+        except Exception:
+            log("FALLO (zip danado): " + nombre)
+            os.remove(tmp)
+            return
+        if not any(n.lower().endswith(VALIDAS[sistema]) for n in dentro):
+            log("NO ES UNA ROM de %s (el zip trae: %s): %s" % (sistema, ", ".join(dentro), nombre))
+            os.remove(tmp)
+            return
     shutil.move(tmp, os.path.join(destino, nombre + ext))
     log("OK: %s -> %s/%s%s" % (nombre, sistema, nombre, ext))
 
