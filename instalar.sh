@@ -78,6 +78,13 @@ def limpio(t):
     return re.sub(r'[\\/:*?"<>|]', "", t).strip()
 
 
+def recargar():
+    # Reinicia el menu (EmulationStation) para que vea el juego nuevo
+    if os.environ.get("CATALOGO_NO_RECARGAR"):
+        return
+    subprocess.Popen(["systemctl", "restart", "emustation"], start_new_session=True)
+
+
 def curl(url, salida):
     return subprocess.run(["curl", "-L", "-s", "-f", "-o", salida, url]).returncode
 
@@ -136,6 +143,7 @@ def main():
             return
     shutil.move(tmp, os.path.join(destino, nombre + ext))
     log("OK: %s -> %s/%s%s" % (nombre, sistema, nombre, ext))
+    recargar()
 
 
 main()
@@ -145,4 +153,4 @@ for s in nes snes atarilynx; do
   curl -L -s -f -o "$DIR/listas/$s.jsonl" "$BASE/$s.jsonl" || echo "No pude bajar la lista $s"
 done
 python3 "$DIR/generar.py"
-echo "Listo. Ahora en EmuELEC: Start > Game Settings > Update Gamelists, y busca Ports > Catalogo."
+echo "Listo. Abre Ports > Catalogo, elige un juego y espera: el menu se reiniciara solo al terminar la descarga."
