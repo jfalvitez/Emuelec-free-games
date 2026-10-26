@@ -1435,7 +1435,12 @@ import shutil
 DIR = os.environ.get("CATALOG_DIR", "/storage/catalog")
 ROMS = os.environ.get("ROMS_DIR", "/storage/roms")
 ROOT = os.path.join(ROMS, "ports_scripts", "Catalog")
-NAMES = {"nes": "NES", "snes": "SNES", "atarilynx": "Atari Lynx"}
+NAMES = {
+    "nes": "NES", "snes": "SNES", "atarilynx": "Atari Lynx", "atari2600": "Atari 2600",
+    "gba": "Game Boy Advance", "gbc": "Game Boy Color", "genesis": "Sega Genesis",
+    "mastersystem": "Sega Master System", "c64": "Commodore 64", "zxspectrum": "Sinclair ZX Spectrum",
+    "n64": "Nintendo 64",
+}
 
 
 def slug(t):
@@ -1486,16 +1491,28 @@ import subprocess
 import sys
 import time
 import zipfile
+from urllib.parse import unquote, urlparse
 
 DIR = os.environ.get("CATALOG_DIR", "/storage/catalog")
 ROMS = os.environ.get("ROMS_DIR", "/storage/roms")
 LOG = os.path.join(DIR, "log.txt")
 IMG = os.path.join(DIR, "img")
-EXT = {"nes": ".nes", "snes": ".sfc", "atarilynx": ".lnx"}
+EXT = {
+    "nes": ".nes", "snes": ".sfc", "atarilynx": ".lnx", "atari2600": ".a26", "gba": ".gba",
+    "gbc": ".gbc", "genesis": ".md", "mastersystem": ".sms", "c64": ".d64", "zxspectrum": ".tap", "n64": ".z64",
+}
 VALID = {
     "nes": (".nes", ".unf", ".unif", ".fds"),
     "snes": (".sfc", ".smc", ".fig", ".swc", ".bs", ".st", ".bin"),
     "atarilynx": (".lnx", ".lyx", ".o"),
+    "atari2600": (".a26", ".bin", ".a78"),
+    "gba": (".gba", ".bin", ".agb"),
+    "gbc": (".gbc", ".gb", ".cgb"),
+    "genesis": (".bin", ".md", ".smd", ".gen"),
+    "mastersystem": (".sms", ".bin"),
+    "c64": (".d64", ".prg", ".tap", ".t64", ".crt", ".d71", ".d81", ".g64", ".x64"),
+    "zxspectrum": (".tap", ".tzx", ".z80", ".sna", ".szx"),
+    "n64": (".z64", ".n64", ".v64"),
 }
 
 
@@ -1589,7 +1606,7 @@ def main():
     name = clean(rec["label"])
     dest = os.path.join(ROMS, system)
     os.makedirs(dest, exist_ok=True)
-    for e in (".zip", EXT.get(system, ".bin")):
+    for e in {".zip", EXT.get(system, ".bin")} | set(VALID.get(system, ())):
         if os.path.exists(os.path.join(dest, name + e)):
             log("ALREADY INSTALLED: " + name)
             show("have", 2)
@@ -1619,7 +1636,13 @@ def main():
         os.remove(tmp)
         fail("FAILED (got a web page instead of the game): " + name)
         return
-    ext = ".zip" if head[:2] == b"PK" else EXT.get(system, ".bin")
+    url_ext = os.path.splitext(unquote(urlparse(url).path))[1].lower()
+    if head[:2] == b"PK":
+        ext = ".zip"
+    elif url_ext in VALID.get(system, ()):
+        ext = url_ext
+    else:
+        ext = EXT.get(system, ".bin")
     if ext == ".zip" and system in VALID:
         try:
             inside = zipfile.ZipFile(tmp).namelist()
@@ -1708,7 +1731,7 @@ def main():
 main()
 PYEOF
 
-for s in nes snes atarilynx; do
+for s in nes snes atarilynx atari2600 gba gbc genesis mastersystem c64 zxspectrum n64; do
   curl -L -s -f -o "$DIR/lists/$s.jsonl" "$BASE/$s.jsonl?t=$(date +%s)" || echo "Could not download the $s list"
 done
 python3 "$DIR/generate.py"

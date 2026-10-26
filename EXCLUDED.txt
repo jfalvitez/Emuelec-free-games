@@ -1,0 +1,103 @@
+Entries left out of the catalog on purpose (commercial titles, trademarks, unofficial ports/clones/remakes)
+
+## atari2600-games
+- DK Arcade 2600 (commercial title / trademark)
+- Halo 2600 (commercial title / trademark)
+- Jammed (commercial title / trademark)
+- Robo-Ninja Climb (mentions nintendo)
+- Sand Castles (mentions sega)
+- Three.s (commercial title / trademark)
+- Thrust (commercial title / trademark)
+
+## gba-games
+- 3 WEEKS IN PARADISE (commercial title / trademark)
+- AIRBALL (commercial title / trademark)
+- ANOTHER WORLD (commercial title / trademark)
+- ASTEROIDS [BAGLEY] (commercial title / trademark)
+- ASTEROIDS [PRINCE] (commercial title / trademark)
+- BRIDGE RACER (commercial title / trademark)
+- BUST A MOVE (commercial title / trademark)
+- CASTLE MASTER (commercial title / trademark)
+- CCCP (mentions clone of)
+- CHAOS (commercial title / trademark)
+- CHAOS - THE BATTLE OF WIZARDS (commercial title / trademark)
+- CHIP ADVANCE (commercial title / trademark)
+- CHOCOBO WORLD DELUXE (commercial title / trademark)
+- CLEANGAME ADVANCE (mentions sega)
+- CODENAME HACKER (mentions atari,marvel)
+- COSMIC SMASH CLONE (mentions sega,clone of)
+- DEFLEKTOR (commercial title / trademark)
+- ELIMINATOR (commercial title / trademark)
+- FROGGER (commercial title / trademark)
+- GAPMAN (mentions remake of)
+- GOLDRUNNER (commercial title / trademark)
+- GORF (commercial title / trademark)
+- LEMMINGS (file missing in repo)
+- LOOPED (mentions atari)
+- NEBULUS (commercial title / trademark)
+- PAC RUN (commercial title / trademark)
+- TAILGUNNER (commercial title / trademark)
+- THE LORDS OF MIDNIGHT (commercial title / trademark)
+- TRON [LORD GRAGA] (commercial title / trademark)
+- YAHTZEE [HERG] (commercial title / trademark)
+
+## gbc-games
+
+## md-games
+- 30 Years Of Nintendon't (mentions nintendo)
+- Barbarian (CPC) (commercial title / trademark)
+- Cave Story (commercial title / trademark)
+- Crazy Cars (commercial title / trademark)
+- Fix It Felix Jr. (commercial title / trademark)
+- IK+ Deluxe version (commercial title / trademark)
+- Leovigildo's Murcian Conspiracy (file missing in repo)
+- Oh Mummy! (commercial title / trademark)
+- Old Towers (file missing in repo)
+- Return To Genesis (mentions atari)
+- Rick Dangerous (commercial title / trademark)
+- Rick Dangerous II (commercial title / trademark)
+- Tro-Now (mentions nintendo)
+- Ultimate Tetris (commercial title / trademark)
+- Virtua Worm (mentions clone of)
+
+## nes-games
+- Concentration Room (mentions mattel,hasbro)
+- Flappy Block (mentions clone of)
+- Indivisible On NES (commercial title / trademark)
+- Lunar Limit (mentions atari)
+- Robo-Ninja Climb (mentions atari)
+- Star Evil (mentions remake of)
+- Super Tilt Bro. (mentions clone of)
+
+## sms-games
+- Astroswab (mentions atari)
+- Block Quest (mentions capcom)
+- Data Storm (mentions atari,clone of)
+- Duckslayer Adventures (mentions atari)
+- Freeway '86 (mentions activision)
+- Galactic Revenge (mentions sunsoft)
+- Picross (commercial title / trademark)
+- Simpsons Trivia (commercial title / trademark)
+- Space Hawks (mentions unofficial)
+
+## c64-games
+- Snafu [C64] (mentions mattel,remake of)
+- Zilspleef [C64] (mentions atari)
+
+## zxspectrum-games
+- Berzerk (commercial title / trademark)
+- Columns (commercial title / trademark)
+- El Hobbit (Vah-ka's Cut) (commercial title / trademark)
+- Horace Goes To The Tower (commercial title / trademark)
+- Miner'49er (commercial title / trademark)
+- Parachute (commercial title / trademark)
+- Unhallowed (mentions lucasarts)
+
+## colecovision-games
+- whole set skipped: it mixes homebrew with many unofficial conversions of commercial arcade games
+
+## Nintendo 64 (zophar.net public domain page)
+- Super Fighter Demo (promotional demo built around the commercial game Super Fighter)
+## Nintendo 64 (others considered)
+- DamN64 (MIT license, but only distributed through itch.io, which has no stable direct link)
+- N64brew Game Jam 2023 entries (no downloadable ROM release found)
