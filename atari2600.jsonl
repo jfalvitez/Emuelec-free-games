@@ -1,3 +1,7 @@
+# Free games list for: Atari 2600 (EmuELEC folder name: atari2600)
+# One game per line, written as JSON. Lines that start with # are ignored. Only add free, public-domain or homebrew games that the author lets people share.
+# Accepted file types: .7z .a26 .bin .zip
+# {"label": "Game name", "system": "atari2600", "url": "https://direct.link/to/the/game/file", "source": "where it comes from", "author": "who made it", "size": 12345}
 {"label": "Anguna 2600", "system": "atari2600", "url": "https://raw.githubusercontent.com/retrobrews/atari2600-games/master/anguna.bin", "source": "github.com/retrobrews/atari2600-games", "author": "Nathan Tolbert", "size": 16384}
 {"label": "Bit Quest", "system": "atari2600", "url": "https://raw.githubusercontent.com/retrobrews/atari2600-games/master/bitquest.bin", "source": "github.com/retrobrews/atari2600-games", "author": "Brian W. Shea (Metalbabble)", "size": 16384}
 {"label": "Bit Quest II", "system": "atari2600", "url": "https://raw.githubusercontent.com/retrobrews/atari2600-games/master/bitquest2.bin", "source": "github.com/retrobrews/atari2600-games", "author": "Brian W. Shea (Metalbabble)", "size": 32768}

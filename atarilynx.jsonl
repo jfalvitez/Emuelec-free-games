@@ -1,3 +1,7 @@
+# Free games list for: Atari Lynx (EmuELEC folder name: atarilynx)
+# One game per line, written as JSON. Lines that start with # are ignored. Only add free, public-domain or homebrew games that the author lets people share.
+# Accepted file types: .7z .lnx .zip
+# {"label": "Game name", "system": "atarilynx", "url": "https://direct.link/to/the/game/file", "source": "where it comes from", "author": "who made it", "size": 12345}
 {"label": "A Corridor", "system": "atarilynx", "page": "https://www.zophar.net/pdroms/lynx/a-corridor.html", "source": "zophar.net public domain ROMs"}
 {"label": "Befok", "system": "atarilynx", "page": "https://www.zophar.net/pdroms/lynx/befok.html", "source": "zophar.net public domain ROMs"}
 {"label": "Bubble Bobble Demo", "system": "atarilynx", "page": "https://www.zophar.net/pdroms/lynx/bubble-bobble-demo.html", "source": "zophar.net public domain ROMs"}

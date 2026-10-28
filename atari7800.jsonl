@@ -1,0 +1,4 @@
+# Free games list for: Atari 7800 (EmuELEC folder name: atari7800)
+# One game per line, written as JSON. Lines that start with # are ignored. Only add free, public-domain or homebrew games that the author lets people share.
+# Accepted file types: .7z .a78 .bin .zip
+# {"label": "Game name", "system": "atari7800", "url": "https://direct.link/to/the/game/file", "source": "where it comes from", "author": "who made it", "size": 12345}

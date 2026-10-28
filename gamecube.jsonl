@@ -1,0 +1,4 @@
+# Free games list for: Nintendo GameCube (EmuELEC folder name: gamecube)
+# One game per line, written as JSON. Lines that start with # are ignored. Only add free, public-domain or homebrew games that the author lets people share.
+# Accepted file types: .ciso .gcm .gcz .iso .rvz .wbfs
+# {"label": "Game name", "system": "gamecube", "url": "https://direct.link/to/the/game/file", "source": "where it comes from", "author": "who made it", "size": 12345}

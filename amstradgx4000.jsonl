@@ -1,0 +1,4 @@
+# Free games list for: Amstrad GX4000 (EmuELEC folder name: amstradgx4000)
+# One game per line, written as JSON. Lines that start with # are ignored. Only add free, public-domain or homebrew games that the author lets people share.
+# Accepted file types: .cdt .cpr .dsk .m3u .sna .tap .voc .zip
+# {"label": "Game name", "system": "amstradgx4000", "url": "https://direct.link/to/the/game/file", "source": "where it comes from", "author": "who made it", "size": 12345}

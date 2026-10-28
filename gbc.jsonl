@@ -1,3 +1,7 @@
+# Free games list for: Game Boy Color (EmuELEC folder name: gbc)
+# One game per line, written as JSON. Lines that start with # are ignored. Only add free, public-domain or homebrew games that the author lets people share.
+# Accepted file types: .7z .gb .gbc .zip
+# {"label": "Game name", "system": "gbc", "url": "https://direct.link/to/the/game/file", "source": "where it comes from", "author": "who made it", "size": 12345}
 {"label": "Blastah", "system": "gbc", "url": "https://raw.githubusercontent.com/retrobrews/gbc-games/master/blastah.gb", "source": "github.com/retrobrews/gbc-games", "author": "Black Box", "size": 65536}
 {"label": "Brickster", "system": "gbc", "url": "https://raw.githubusercontent.com/retrobrews/gbc-games/master/brickster.gbc", "source": "github.com/retrobrews/gbc-games", "author": "Stephane Hockenhull", "size": 32768}
 {"label": "Burly Bear vs. The Mean Foxes", "system": "gbc", "url": "https://raw.githubusercontent.com/retrobrews/gbc-games/master/burly.gbc", "source": "github.com/retrobrews/gbc-games", "author": "Sebastian Mihai", "size": 32768}

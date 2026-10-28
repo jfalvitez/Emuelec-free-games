@@ -1,3 +1,7 @@
+# Free games list for: Nintendo 64 (EmuELEC folder name: n64)
+# One game per line, written as JSON. Lines that start with # are ignored. Only add free, public-domain or homebrew games that the author lets people share.
+# Accepted file types: .7z .n64 .v64 .z64 .zip
+# {"label": "Game name", "system": "n64", "url": "https://direct.link/to/the/game/file", "source": "where it comes from", "author": "who made it", "size": 12345}
 {"label": "N64brew Game Jam 2024", "system": "n64", "url": "https://github.com/n64brew/N64brew-GameJam2024/releases/download/1.2.1/gamejam2024.z64", "author": "N64brew community (MIT license)", "source": "github.com/n64brew/N64brew-GameJam2024", "size": 11943936}
 {"label": "Fission Failure 64", "system": "n64", "url": "https://github.com/vrgl117-games/FissionFailure64/releases/download/n64brew-jam-2/FissionFailure64.z64", "author": "vrgl117.games (MIT license)", "source": "github.com/vrgl117-games/FissionFailure64", "size": 15335424}
 {"label": "Sblobber64", "system": "n64", "url": "https://github.com/vrgl117-games/sblobber64/releases/download/n64brew-jam-1/sblobber64.z64", "author": "vrgl117.games (MIT license)", "source": "github.com/vrgl117-games/sblobber64", "size": 5819136}

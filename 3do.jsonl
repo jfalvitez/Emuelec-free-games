@@ -1,0 +1,4 @@
+# Free games list for: Panasonic 3DO (EmuELEC folder name: 3do)
+# One game per line, written as JSON. Lines that start with # are ignored. Only add free, public-domain or homebrew games that the author lets people share.
+# Accepted file types: .7z .bin .chd .cue .iso .zip
+# {"label": "Game name", "system": "3do", "url": "https://direct.link/to/the/game/file", "source": "where it comes from", "author": "who made it", "size": 12345}

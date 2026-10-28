@@ -1,3 +1,7 @@
+# Free games list for: NES (EmuELEC folder name: nes)
+# One game per line, written as JSON. Lines that start with # are ignored. Only add free, public-domain or homebrew games that the author lets people share.
+# Accepted file types: .7z .nes .nesm .unf .unif .zip
+# {"label": "Game name", "system": "nes", "url": "https://direct.link/to/the/game/file", "source": "where it comes from", "author": "who made it", "size": 12345}
 {"label": "Bingo", "system": "nes", "page": "https://www.zophar.net/pdroms/nes/bingo.html", "url": "https://www.zophar.net/download_file/11886", "source": "zophar.net public domain ROMs", "size": 38724}
 {"label": "BombSweeper for NES", "system": "nes", "page": "https://www.zophar.net/pdroms/nes/bombsweeper-for-nes.html", "url": "https://www.zophar.net/download_file/11839", "source": "zophar.net public domain ROMs"}
 {"label": "CMC'80s", "system": "nes", "page": "https://www.zophar.net/pdroms/nes/cmc-80s.html", "source": "zophar.net public domain ROMs"}

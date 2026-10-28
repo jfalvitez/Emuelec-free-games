@@ -1,0 +1,4 @@
+# Free games list for: NEC TurboGrafx 16 (EmuELEC folder name: tg16)
+# One game per line, written as JSON. Lines that start with # are ignored. Only add free, public-domain or homebrew games that the author lets people share.
+# Accepted file types: .7z .bin .pce .zip
+# {"label": "Game name", "system": "tg16", "url": "https://direct.link/to/the/game/file", "source": "where it comes from", "author": "who made it", "size": 12345}

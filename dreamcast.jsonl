@@ -1,0 +1,4 @@
+# Free games list for: Sega Dreamcast (EmuELEC folder name: dreamcast)
+# One game per line, written as JSON. Lines that start with # are ignored. Only add free, public-domain or homebrew games that the author lets people share.
+# Accepted file types: .7z .cdi .chd .gdi .m3u .zip
+# {"label": "Game name", "system": "dreamcast", "url": "https://direct.link/to/the/game/file", "source": "where it comes from", "author": "who made it", "size": 12345}

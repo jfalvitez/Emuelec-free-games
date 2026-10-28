@@ -1,3 +1,7 @@
+# Free games list for: SNES (EmuELEC folder name: snes)
+# One game per line, written as JSON. Lines that start with # are ignored. Only add free, public-domain or homebrew games that the author lets people share.
+# Accepted file types: .7z .bs .bsx .dx2 .fig .gd3 .gd7 .sfc .smc .st .swc .zip
+# {"label": "Game name", "system": "snes", "url": "https://direct.link/to/the/game/file", "source": "where it comes from", "author": "who made it", "size": 12345}
 {"label": "32,768 Color Demo", "system": "snes", "page": "https://www.zophar.net/pdroms/snes/32-768-color-demo.html", "source": "zophar.net public domain ROMs"}
 {"label": "Airwolf '92", "system": "snes", "page": "https://www.zophar.net/pdroms/snes/airwolf-92.html", "source": "zophar.net public domain ROMs"}
 {"label": "Astrohawk", "system": "snes", "page": "https://www.zophar.net/pdroms/snes/astrohawk.html", "source": "zophar.net public domain ROMs"}

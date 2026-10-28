@@ -101,3 +101,8 @@ Entries left out of the catalog on purpose (commercial titles, trademarks, unoff
 ## Nintendo 64 (others considered)
 - DamN64 (MIT license, but only distributed through itch.io, which has no stable direct link)
 - N64brew Game Jam 2023 entries (no downloadable ROM release found)
+
+## Systems without a list on purpose
+- ports, setup, mplayer: these systems run shell scripts on the device, so the catalog never downloads for them.
+- karaoke, imageviewer (Screenshots): they are not games.
+- apple2, fmtowns: they only accept .cmd command files.

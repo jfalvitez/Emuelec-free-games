@@ -2121,6 +2121,334 @@ B64EOF
 python3 -c "import base64,io,tarfile; tarfile.open(fileobj=io.BytesIO(base64.b64decode(open('$DIR/img.b64').read())),mode='r:gz').extractall('$DIR/img')"
 rm -f "$DIR/img.b64"
 
+cat > "$DIR/systems.py" << 'PYEOF'
+# Generated from the device's es_systems.cfg (EmuELEC 4.8). Systems that run scripts or are not games are left out on purpose.
+NAMES = {
+    'amstradgx4000': 'Amstrad GX4000',
+    'amstradcpc': 'Amstrad CPC',
+    'arcade': 'Arcade',
+    'mame': 'Arcade MAME',
+    'daphne': 'Daphne',
+    'fbn': 'Final Burn Neo',
+    'atari2600': 'Atari 2600',
+    'atari5200': 'Atari 5200',
+    'atari7800': 'Atari 7800',
+    'atari800': 'Atari 800',
+    'atarilynx': 'Atari Lynx',
+    'atarist': 'Atari ST',
+    'atarijaguar': 'Atari Jaguar',
+    'wonderswan': 'Bandai Wonderswan',
+    'wonderswancolor': 'Bandai Wonderswan Color',
+    'sufami': 'SuFami Turbo',
+    'uzebox': 'uzebox',
+    'bk': 'Electronika',
+    'cps1': 'Capcom PlaySystem 1',
+    'cps2': 'Capcom PlaySystem 2',
+    'cps3': 'Capcom PlaySystem 3',
+    'colecovision': 'ColecoVision',
+    'c128': 'Commodore 128',
+    'c64': 'Commodore 64',
+    'amiga': 'Commodore Amiga',
+    'amigacd32': 'Commodore Amiga CD 32',
+    'c16': 'Commodore Plus4',
+    'vic20': 'Commodore Vic 20',
+    'easyrpg': 'EasyRPG',
+    'freej2me': 'Java Games',
+    'gmloader': 'Gamemaker Loader',
+    'prboom': 'Doom',
+    'ecwolf': 'Wolfenstein 3D',
+    'pgm2': 'PolyGame Master',
+    'pico8': 'PICO-8 fantasy console',
+    'scummvm': 'ScummVM',
+    'odyssey2': 'Magnavox Odyssey 2',
+    'videopac': 'Philips VideoPac',
+    'intellivision': 'Mattel Intellivision',
+    'pc': 'DOS x86',
+    'msx': 'MSX',
+    'msx2': 'MSX2',
+    'vectrex': 'Milton Bradley Vectrex',
+    'pc-9800': 'NEC PC-9800',
+    'pcengine': 'NEC PC-Engine',
+    'pcenginecd': 'NEC PC-Engine CD',
+    'pcfx': 'NEC PC-FX',
+    'supergrafx': 'NEC Super Grafx',
+    'tg16': 'NEC TurboGrafx 16',
+    'tg16cd': 'NEC TurboGrafx 16-CD',
+    'tic-80': 'TIC-80',
+    'wii': 'Nintendo Wii',
+    'gamecube': 'Nintendo GameCube',
+    'n64': 'Nintendo 64',
+    'nes': 'NES',
+    'nesh': 'Nintendo Entertainment System Hacks',
+    'famicom': 'Nintendo Famicom',
+    'fds': 'Nintendo Famicom Disk System',
+    'gb': 'Nintendo Game Boy',
+    'gba': 'Game Boy Advance',
+    'gbah': 'Nintendo Game Boy Advance hacks',
+    'gbc': 'Game Boy Color',
+    'gbch': 'Nintendo Game Boy Color Hacks',
+    'gbh': 'Nintendo Game Boy Hacks',
+    'gameandwatch': 'Nintendo Game and Watch',
+    'sfc': 'Nintendo Super Famicom',
+    'snes': 'SNES',
+    'snesh': 'Nintendo Super Nintendo Hacks',
+    'satellaview': 'Satellaview',
+    'virtualboy': 'Nintendo Virtual Boy',
+    'pokemini': 'Pokemon Mini',
+    'snesmsu1': "Near's Super Nintendo MSU1",
+    '3do': 'Panasonic 3DO',
+    'phillips-cdi': 'Phillips CDI',
+    'openbor': 'OpenBOR',
+    'ikemen': 'ikemen',
+    'atomiswave': 'Atomiswave',
+    'sega32x': 'Sega 32X',
+    'segacd': 'Sega CD',
+    'dreamcast': 'Sega Dreamcast',
+    'gamegear': 'Sega Game Gear',
+    'ggh': 'Sega Game Gear Hacks',
+    'genesis': 'Sega Genesis',
+    'genh': 'Sega Genesis Hacks',
+    'mastersystem': 'Sega Master System',
+    'megadrive': 'Sega Mega Drive',
+    'megadrivemsu': 'Sega Mega Drive MSU',
+    'megadrive-japan': 'Sega Mega Drive Japan',
+    'naomi': 'Sega Naomi',
+    'sc-3000': 'Sega SC-3000',
+    'sg-1000': 'Sega SG-1000',
+    'saturn': 'Sega Saturn',
+    'x68000': 'Sharp X68000',
+    'x1': 'Sharp X1',
+    'zxspectrum': 'Sinclair ZX Spectrum',
+    'zx81': 'Sinclair ZX81',
+    'neogeo': 'SNK Neo-Geo',
+    'neocd': 'SNK Neo-Geo CD',
+    'ngp': 'SNK Neo-Geo Pocket',
+    'ngpc': 'SNK Neo-Geo Pocket Color',
+    'solarus': 'Solarus',
+    'psx': 'Sony Playstation',
+    'psp': 'Sony Playstation Portable',
+    'pspminis': 'Sony Playstation Portable Minis',
+    'supervision': 'Supervision',
+    'megaduck': 'MegaDuck',
+}
+EXT = {
+    'amstradgx4000': '.cdt',
+    'amstradcpc': '.cdt',
+    'arcade': '.zip',
+    'mame': '.zip',
+    'daphne': '.daphne',
+    'fbn': '.zip',
+    'atari2600': '.a26',
+    'atari5200': '.a52',
+    'atari7800': '.a78',
+    'atari800': '.a52',
+    'atarilynx': '.lnx',
+    'atarist': '.dim',
+    'atarijaguar': '.j64',
+    'wonderswan': '.ws',
+    'wonderswancolor': '.wsc',
+    'sufami': '.bs',
+    'uzebox': '.hex',
+    'bk': '.bin',
+    'cps1': '.zip',
+    'cps2': '.zip',
+    'cps3': '.zip',
+    'colecovision': '.bin',
+    'c128': '.crt',
+    'c64': '.crt',
+    'amiga': '.adf',
+    'amigacd32': '.chd',
+    'c16': '.d64',
+    'vic20': '.d64',
+    'easyrpg': '.ldb',
+    'freej2me': '.jar',
+    'gmloader': '.apk',
+    'prboom': '.doom',
+    'ecwolf': '.ecwolf',
+    'pgm2': '.zip',
+    'pico8': '.p8',
+    'scummvm': '.scummvm',
+    'odyssey2': '.bin',
+    'videopac': '.bin',
+    'intellivision': '.bin',
+    'pc': '.iso',
+    'msx': '.cas',
+    'msx2': '.cas',
+    'vectrex': '.bin',
+    'pc-9800': '.2hd',
+    'pcengine': '.bin',
+    'pcenginecd': '.bin',
+    'pcfx': '.ccd',
+    'supergrafx': '.ccd',
+    'tg16': '.bin',
+    'tg16cd': '.bin',
+    'tic-80': '.tic',
+    'wii': '.ciso',
+    'gamecube': '.ciso',
+    'n64': '.n64',
+    'nes': '.nes',
+    'nesh': '.nes',
+    'famicom': '.nes',
+    'fds': '.fds',
+    'gb': '.gb',
+    'gba': '.gba',
+    'gbah': '.gba',
+    'gbc': '.gb',
+    'gbch': '.gb',
+    'gbh': '.gb',
+    'gameandwatch': '.mgw',
+    'sfc': '.bs',
+    'snes': '.bs',
+    'snesh': '.bs',
+    'satellaview': '.bs',
+    'virtualboy': '.vb',
+    'pokemini': '.min',
+    'snesmsu1': '.bs',
+    '3do': '.bin',
+    'phillips-cdi': '.chd',
+    'openbor': '.pak',
+    'ikemen': '.ikemen',
+    'atomiswave': '.bin',
+    'sega32x': '.32x',
+    'segacd': '.chd',
+    'dreamcast': '.cdi',
+    'gamegear': '.bin',
+    'ggh': '.bin',
+    'genesis': '.68k',
+    'genh': '.68k',
+    'mastersystem': '.bin',
+    'megadrive': '.68k',
+    'megadrivemsu': '.bin',
+    'megadrive-japan': '.68k',
+    'naomi': '.bin',
+    'sc-3000': '.bin',
+    'sg-1000': '.bin',
+    'saturn': '.bin',
+    'x68000': '.2hd',
+    'x1': '.2d',
+    'zxspectrum': '.rzx',
+    'zx81': '.p',
+    'neogeo': '.neo',
+    'neocd': '.chd',
+    'ngp': '.ngp',
+    'ngpc': '.ngc',
+    'solarus': '.solarus',
+    'psx': '.bin',
+    'psp': '.cso',
+    'pspminis': '.cso',
+    'supervision': '.bin',
+    'megaduck': '.bin',
+}
+VALID = {
+    'amstradgx4000': ('.cdt', '.cpr', '.dsk', '.m3u', '.sna', '.tap', '.voc', '.zip'),
+    'amstradcpc': ('.7z', '.cdt', '.dsk', '.m3u', '.sna', '.tap', '.voc', '.zip'),
+    'arcade': ('.7z', '.zip'),
+    'mame': ('.7z', '.zip'),
+    'daphne': ('.daphne',),
+    'fbn': ('.7z', '.zip'),
+    'atari2600': ('.7z', '.a26', '.bin', '.zip'),
+    'atari5200': ('.7z', '.a52', '.atr', '.atx', '.bin', '.cas', '.cdm', '.rom', '.xex', '.xfd', '.zip'),
+    'atari7800': ('.7z', '.a78', '.bin', '.zip'),
+    'atari800': ('.7z', '.a52', '.atr', '.atx', '.bas', '.bin', '.car', '.cas', '.cdm', '.rom', '.xex', '.xfd', '.zip'),
+    'atarilynx': ('.7z', '.lnx', '.zip'),
+    'atarist': ('.7z', '.dim', '.ipf', '.m3u', '.msa', '.st', '.stx', '.zip'),
+    'atarijaguar': ('.j64', '.jag', '.zip'),
+    'wonderswan': ('.7z', '.ws', '.zip'),
+    'wonderswancolor': ('.7z', '.wsc', '.zip'),
+    'sufami': ('.7z', '.bs', '.fig', '.sfc', '.smc', '.st', '.zip'),
+    'uzebox': ('.hex', '.uze'),
+    'bk': ('.bin', '.zip'),
+    'cps1': ('.7z', '.zip'),
+    'cps2': ('.7z', '.zip'),
+    'cps3': ('.7z', '.zip'),
+    'colecovision': ('.7z', '.bin', '.col', '.rom', '.zip'),
+    'c128': ('.7z', '.crt', '.d64', '.g64', '.m3u', '.prg', '.t64', '.x64', '.zip'),
+    'c64': ('.7z', '.crt', '.d64', '.m3u', '.prg', '.t64', '.tap', '.zip'),
+    'amiga': ('.adf', '.adz', '.dms', '.hdf', '.ipf', '.lha', '.m3u', '.uae', '.zip'),
+    'amigacd32': ('.chd', '.cue', '.hdf', '.iso', '.lha', '.zip'),
+    'c16': ('.d64', '.g64', '.prg', '.t64', '.x64', '.zip'),
+    'vic20': ('.d64', '.g64', '.t64', '.x64', '.zip'),
+    'easyrpg': ('.ldb',),
+    'freej2me': ('.jar',),
+    'gmloader': ('.apk', '.zip'),
+    'prboom': ('.doom', '.iwad', '.pwad', '.wad'),
+    'ecwolf': ('.ecwolf', '.n3d', '.sd2', '.sd3', '.sod', '.wl6'),
+    'pgm2': ('.zip',),
+    'pico8': ('.p8', '.png'),
+    'scummvm': ('.scummvm',),
+    'odyssey2': ('.7z', '.bin', '.zip'),
+    'videopac': ('.bin', '.zip'),
+    'intellivision': ('.7z', '.bin', '.int', '.rom', '.zip'),
+    'pc': ('.bat', '.com', '.cue', '.exe', '.iso', '.zip'),
+    'msx': ('.7z', '.cas', '.dsk', '.m3u', '.mx1', '.mx2', '.rom', '.zip'),
+    'msx2': ('.7z', '.cas', '.dsk', '.m3u', '.mx1', '.mx2', '.rom', '.zip'),
+    'vectrex': ('.7z', '.bin', '.gam', '.vec', '.zip'),
+    'pc-9800': ('.2hd', '.88d', '.98d', '.d88', '.d98', '.dup', '.fdd', '.fdi', '.hdd', '.hdi', '.hdm', '.hdn', '.nhd', '.tfd', '.thd', '.xdf', '.zip'),
+    'pcengine': ('.7z', '.bin', '.pce', '.zip'),
+    'pcenginecd': ('.7z', '.bin', '.ccd', '.chd', '.cue', '.img', '.iso', '.pce', '.zip'),
+    'pcfx': ('.ccd', '.chd', '.cue', '.toc', '.zip'),
+    'supergrafx': ('.7z', '.ccd', '.chd', '.cue', '.pce', '.sgx', '.zip'),
+    'tg16': ('.7z', '.bin', '.pce', '.zip'),
+    'tg16cd': ('.7z', '.bin', '.ccd', '.chd', '.cue', '.img', '.iso', '.pce', '.zip'),
+    'tic-80': ('.tic',),
+    'wii': ('.ciso', '.gcm', '.gcz', '.iso', '.rvz', '.wad', '.wbfs'),
+    'gamecube': ('.ciso', '.gcm', '.gcz', '.iso', '.rvz', '.wbfs'),
+    'n64': ('.7z', '.n64', '.v64', '.z64', '.zip'),
+    'nes': ('.7z', '.nes', '.nesm', '.unf', '.unif', '.zip'),
+    'nesh': ('.7z', '.nes', '.nesm', '.unf', '.unif', '.zip'),
+    'famicom': ('.7z', '.nes', '.nesm', '.unf', '.unif', '.zip'),
+    'fds': ('.7z', '.fds', '.zip'),
+    'gb': ('.7z', '.gb', '.zip'),
+    'gba': ('.7z', '.gba', '.zip'),
+    'gbah': ('.7z', '.gba', '.zip'),
+    'gbc': ('.7z', '.gb', '.gbc', '.zip'),
+    'gbch': ('.7z', '.gb', '.gbc', '.zip'),
+    'gbh': ('.7z', '.gb', '.zip'),
+    'gameandwatch': ('.7z', '.mgw', '.zip'),
+    'sfc': ('.7z', '.bs', '.bsx', '.dx2', '.fig', '.gd3', '.gd7', '.sfc', '.smc', '.st', '.swc', '.zip'),
+    'snes': ('.7z', '.bs', '.bsx', '.dx2', '.fig', '.gd3', '.gd7', '.sfc', '.smc', '.st', '.swc', '.zip'),
+    'snesh': ('.7z', '.bs', '.bsx', '.dx2', '.fig', '.gd3', '.gd7', '.sfc', '.smc', '.st', '.swc', '.zip'),
+    'satellaview': ('.7z', '.bs', '.fig', '.sfc', '.smc', '.st', '.zip'),
+    'virtualboy': ('.7z', '.vb', '.zip'),
+    'pokemini': ('.7z', '.min', '.zip'),
+    'snesmsu1': ('.7z', '.bs', '.bsx', '.dx2', '.fig', '.gd3', '.gd7', '.sfc', '.smc', '.st', '.swc', '.zip'),
+    '3do': ('.7z', '.bin', '.chd', '.cue', '.iso', '.zip'),
+    'phillips-cdi': ('.chd', '.cue', '.iso'),
+    'openbor': ('.pak',),
+    'ikemen': ('.ikemen', '.pc'),
+    'atomiswave': ('.7z', '.bin', '.dat', '.lst', '.zip'),
+    'sega32x': ('.32x', '.7z', '.bin', '.md', '.smd', '.zip'),
+    'segacd': ('.7z', '.chd', '.cue', '.iso', '.m3u', '.zip'),
+    'dreamcast': ('.7z', '.cdi', '.chd', '.gdi', '.m3u', '.zip'),
+    'gamegear': ('.7z', '.bin', '.gg', '.zip'),
+    'ggh': ('.7z', '.bin', '.gg', '.zip'),
+    'genesis': ('.68k', '.7z', '.bin', '.gen', '.md', '.sg', '.sgd', '.smd', '.zip'),
+    'genh': ('.68k', '.7z', '.bin', '.gen', '.md', '.sg', '.sgd', '.smd', '.zip'),
+    'mastersystem': ('.7z', '.bin', '.sms', '.zip'),
+    'megadrive': ('.68k', '.7z', '.bin', '.gen', '.md', '.sg', '.sgd', '.smd', '.zip'),
+    'megadrivemsu': ('.7z', '.bin', '.gen', '.md', '.sg', '.smd', '.zip'),
+    'megadrive-japan': ('.68k', '.7z', '.bin', '.gen', '.md', '.sg', '.sgd', '.smd', '.zip'),
+    'naomi': ('.7z', '.bin', '.dat', '.lst', '.zip'),
+    'sc-3000': ('.7z', '.bin', '.sg', '.zip'),
+    'sg-1000': ('.7z', '.bin', '.sg', '.zip'),
+    'saturn': ('.bin', '.chd', '.cue', '.iso', '.mds', '.zip'),
+    'x68000': ('.2hd', '.7z', '.88d', '.d88', '.dim', '.dup', '.hdf', '.hdm', '.img', '.m3u', '.xdf', '.zip'),
+    'x1': ('.2d', '.2hd', '.7z', '.88d', '.d88', '.dup', '.dx1', '.hdm', '.tap', '.tfd', '.xdf', '.zip'),
+    'zxspectrum': ('.7z', '.rzx', '.scl', '.tap', '.trd', '.tzx', '.z80', '.zip'),
+    'zx81': ('.7z', '.p', '.tzx', '.zip'),
+    'neogeo': ('.7z', '.neo', '.zip'),
+    'neocd': ('.7z', '.chd', '.cue', '.iso', '.zip'),
+    'ngp': ('.7z', '.ngp', '.zip'),
+    'ngpc': ('.7z', '.ngc', '.zip'),
+    'solarus': ('.solarus',),
+    'psx': ('.7z', '.bin', '.cbn', '.ccd', '.chd', '.cue', '.img', '.iso', '.m3u', '.mdf', '.pbp', '.toc', '.zip'),
+    'psp': ('.cso', '.iso', '.pbp'),
+    'pspminis': ('.cso', '.iso', '.pbp'),
+    'supervision': ('.7z', '.bin', '.sv', '.zip'),
+    'megaduck': ('.7z', '.bin', '.zip'),
+}
+PYEOF
+
 cat > "$DIR/common.py" << 'PYEOF'
 import glob
 import json
@@ -2136,29 +2464,8 @@ LOG = os.path.join(DIR, "log.txt")
 IMG = os.path.join(DIR, "img")
 SIZES = os.path.join(DIR, "sizes.json")
 
-NAMES = {
-    "nes": "NES", "snes": "SNES", "atarilynx": "Atari Lynx", "atari2600": "Atari 2600",
-    "gba": "Game Boy Advance", "gbc": "Game Boy Color", "genesis": "Sega Genesis",
-    "mastersystem": "Sega Master System", "c64": "Commodore 64", "zxspectrum": "Sinclair ZX Spectrum",
-    "n64": "Nintendo 64",
-}
-EXT = {
-    "nes": ".nes", "snes": ".sfc", "atarilynx": ".lnx", "atari2600": ".a26", "gba": ".gba",
-    "gbc": ".gbc", "genesis": ".md", "mastersystem": ".sms", "c64": ".d64", "zxspectrum": ".tap", "n64": ".z64",
-}
-VALID = {
-    "nes": (".nes", ".unf", ".unif", ".fds"),
-    "snes": (".sfc", ".smc", ".fig", ".swc", ".bs", ".st", ".bin"),
-    "atarilynx": (".lnx", ".lyx", ".o"),
-    "atari2600": (".a26", ".bin", ".a78"),
-    "gba": (".gba", ".bin", ".agb"),
-    "gbc": (".gbc", ".gb", ".cgb"),
-    "genesis": (".bin", ".md", ".smd", ".gen"),
-    "mastersystem": (".sms", ".bin"),
-    "c64": (".d64", ".prg", ".tap", ".t64", ".crt", ".d71", ".d81", ".g64", ".x64"),
-    "zxspectrum": (".tap", ".tzx", ".z80", ".sna", ".szx"),
-    "n64": (".z64", ".n64", ".v64"),
-}
+from systems import EXT, NAMES, VALID
+
 CURL_FLAGS = ["-L", "-s", "-f", "--connect-timeout", "15", "--speed-time", "30", "--speed-limit", "1000"]
 
 
@@ -2176,13 +2483,40 @@ def clean(t):
     return re.sub(r'[\\/:*?"<>|]', "", t).strip()
 
 
+_RES = None
+
+
+def screen_size():
+    # EmuELEC's own splash script scales its images to the TV resolution; do the same
+    global _RES
+    if _RES is None:
+        _RES = ()
+        try:
+            out = os.environ.get("CATALOG_RESOLUTION")
+            if not out:
+                r = subprocess.run(["bash", "-c", ". /etc/profile; get_resolution"],
+                                   stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, timeout=5)
+                out = r.stdout.decode("latin-1")
+            n = re.findall(r"\d+", out)
+            if len(n) >= 2 and int(n[0]) >= 320 and int(n[1]) >= 200:
+                _RES = (int(n[0]), int(n[1]))
+        except Exception:
+            pass
+    return _RES
+
+
 def show(name, hold=0):
     # Draw a full-screen message image, the same way EmuELEC draws its own splash screens
     path = os.path.join(IMG, name + ".png")
     if not os.environ.get("CATALOG_NO_SCREEN") and os.path.exists(path):
         try:
-            r = subprocess.run(
-                ["ffplay", "-fs", "-loglevel", "error", "-nostats", "-autoexit", "-i", path],
+            cmd = ["ffplay", "-fs", "-loglevel", "error", "-nostats", "-autoexit"]
+            res = screen_size()
+            if res:
+                w, h = res
+                cmd += ["-vf", "scale=%d:%d:force_original_aspect_ratio=decrease,"
+                               "pad=%d:%d:(ow-iw)/2:(oh-ih)/2:color=0x101820,setsar=1" % (w, h, w, h)]
+            r = subprocess.run(cmd + ["-i", path],
                 stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, timeout=4)
             if r.returncode != 0:
                 log("SCREEN: ffplay returned %d for %s" % (r.returncode, name))
@@ -2223,7 +2557,7 @@ def read_list(path):
     # yields (record, line_ok); bad lines are reported, never raised
     for line in open(path, encoding="utf-8", errors="ignore"):
         line = line.strip()
-        if not line:
+        if not line or line.startswith("#"):
             continue
         try:
             j = json.loads(line)
@@ -2313,6 +2647,38 @@ def resolve_url(rec):
     if not m:
         return None, "broken"
     return "https://www.zophar.net/download_file/" + m.group(1), None
+
+
+def fetch_lists(base):
+    # Download <system>.jsonl for every known system, in parallel. Keep only lists that have at least one game.
+    from concurrent.futures import ThreadPoolExecutor
+    os.makedirs(os.path.join(DIR, "lists"), exist_ok=True)
+    stamp = "?t=%d" % int(time.time()) if base.startswith("http") else ""
+
+    def one(name):
+        tmp = "/tmp/catalog_list_%s.jsonl" % name
+        rc = curl_rc("%s/%s.jsonl%s" % (base, name, stamp), tmp, 60)
+        if rc == 22:
+            return name, "missing"
+        if rc != 0:
+            return name, "failed"
+        n = sum(1 for r, ok in read_list(tmp) if ok)
+        if n == 0:
+            os.remove(tmp)
+            return name, "empty"
+        shutil.move(tmp, os.path.join(DIR, "lists", name + ".jsonl"))
+        return name, n
+
+    with ThreadPoolExecutor(8) as ex:
+        results = list(ex.map(one, sorted(NAMES)))
+    if any(isinstance(r, int) for _, r in results):
+        # remote is the source of truth: drop local lists that no longer exist or became empty
+        for name, r in results:
+            if r in ("missing", "empty"):
+                p = os.path.join(DIR, "lists", name + ".jsonl")
+                if os.path.exists(p):
+                    os.remove(p)
+    return results
 PYEOF
 
 cat > "$DIR/generate.py" << 'PYEOF'
@@ -2341,6 +2707,9 @@ def write_entry(folder, fname, command):
 for path in list_files():
     for rec, ok in read_list(path):
         if not ok:
+            skipped += 1
+            continue
+        if rec["system"] not in VALID:
             skipped += 1
             continue
         system, label = rec["system"], clean(rec["label"])
@@ -2426,6 +2795,8 @@ def main():
     rec = find(system, key)
     if not rec:
         return fail("NOT FOUND: %s %s" % (system, key))
+    if system not in VALID:
+        return fail("BLOCKED: '%s' is not a system the catalog is allowed to download for" % system, "notrom")
     name = clean(rec["label"])
     dest = os.path.join(ROMS, system)
     os.makedirs(dest, exist_ok=True)
@@ -2438,6 +2809,8 @@ def main():
     url, err = resolve_url(rec)
     if not url:
         return fail("FAILED to find the download link of " + name, err)
+    if not url.lower().startswith(("http://", "https://")) and not os.environ.get("CATALOG_ALLOW_FILE"):
+        return fail("BLOCKED: only http(s) links are allowed (%s)" % name, "broken")
     total = size_of(rec, load_sizes()) or total_size(url)
     if free_bytes() < (total or 0) + 30 * 1024 * 1024:
         return fail("NOT ENOUGH SPACE for %s (needs %s, free %s)" % (name, fmt_size(total), fmt_size(free_bytes())), "nospace")
@@ -2510,25 +2883,14 @@ def update_code(base):
 
 
 def update_lists(base):
-    good = failed = 0
-    for path in list_files():
-        name = os.path.basename(path)
-        tmp = "/tmp/catalog_" + name
-        if curl_rc(base + "/" + name + buster(base), tmp, 120) != 0:
-            log("UPDATE FAILED to download %s (kept the old list)" % name)
-            failed += 1
-            continue
-        n = bad = 0
-        for rec, ok in read_list(tmp):
-            n += ok
-            bad += (not ok)
-        if n == 0:
-            log("UPDATE SKIPPED %s: no valid lines (kept the old list)" % name)
-            failed += 1
-            continue
-        shutil.move(tmp, path)
-        log("UPDATED %s (%d games)%s" % (name, n, " - %d invalid lines ignored" % bad if bad else ""))
-        good += 1
+    results = fetch_lists(base)
+    good = sum(1 for _, r in results if isinstance(r, int))
+    failed = sum(1 for _, r in results if r == "failed")
+    for name, r in results:
+        if isinstance(r, int):
+            log("UPDATED %s.jsonl (%d games)" % (name, r))
+        elif r == "failed":
+            log("UPDATE FAILED to download %s.jsonl (kept the old list)" % name)
     return good, failed
 
 
@@ -2581,9 +2943,23 @@ log("SIZES: found %d of %d missing sizes" % (done, len(missing)))
 print("sizes found: %d" % done)
 PYEOF
 
-for s in nes snes atarilynx atari2600 gba gbc genesis mastersystem c64 zxspectrum n64; do
-  curl -L -s -f -o "$DIR/lists/$s.jsonl" "$BASE/$s.jsonl?t=$(date +%s)" || echo "Could not download the $s list"
-done
+cat > "$DIR/fetchlists.py" << 'PYEOF'
+import os
+
+from common import *
+
+base = open(os.path.join(DIR, "base_url.txt")).read().strip()
+results = fetch_lists(base)
+with_games = [(n, r) for n, r in results if isinstance(r, int)]
+failed = [n for n, r in results if r == "failed"]
+print("lists with games: %s" % ", ".join("%s(%d)" % x for x in with_games))
+if failed:
+    print("could not download: %s" % ", ".join(failed))
+log("LISTS: %d lists with games, %d failed" % (len(with_games), len(failed)))
+PYEOF
+
+echo "Downloading the game lists..."
+python3 "$DIR/fetchlists.py"
 echo "Checking game sizes (this can take a minute the first time)..."
 python3 "$DIR/sizes.py"
 python3 "$DIR/generate.py"

@@ -1,3 +1,7 @@
+# Free games list for: Game Boy Advance (EmuELEC folder name: gba)
+# One game per line, written as JSON. Lines that start with # are ignored. Only add free, public-domain or homebrew games that the author lets people share.
+# Accepted file types: .7z .gba .zip
+# {"label": "Game name", "system": "gba", "url": "https://direct.link/to/the/game/file", "source": "where it comes from", "author": "who made it", "size": 12345}
 {"label": "A Werewolf Tale", "system": "gba", "url": "https://raw.githubusercontent.com/retrobrews/gba-games/master/awerewolftale.gba", "source": "github.com/retrobrews/gba-games", "author": "Genecyst", "size": 7359860}
 {"label": "AGB Hack", "system": "gba", "url": "https://raw.githubusercontent.com/retrobrews/gba-games/master/agbhack.bin", "source": "github.com/retrobrews/gba-games", "author": "Donnie Russell", "size": 543372}
 {"label": "AGB Rogue", "system": "gba", "url": "https://raw.githubusercontent.com/retrobrews/gba-games/master/agbrogue.bin", "source": "github.com/retrobrews/gba-games", "author": "Donnie Russell II", "size": 355596}

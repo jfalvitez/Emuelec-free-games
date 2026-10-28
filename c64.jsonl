@@ -1,3 +1,7 @@
+# Free games list for: Commodore 64 (EmuELEC folder name: c64)
+# One game per line, written as JSON. Lines that start with # are ignored. Only add free, public-domain or homebrew games that the author lets people share.
+# Accepted file types: .7z .crt .d64 .m3u .prg .t64 .tap .zip
+# {"label": "Game name", "system": "c64", "url": "https://direct.link/to/the/game/file", "source": "where it comes from", "author": "who made it", "size": 12345}
 {"label": "$100 Box", "system": "c64", "url": "https://raw.githubusercontent.com/retrobrews/c64-games/master/100box.prg", "source": "github.com/retrobrews/c64-games", "author": "Cout Games", "size": 2991}
 {"label": "Algol", "system": "c64", "url": "https://raw.githubusercontent.com/retrobrews/c64-games/master/algol.d64", "source": "github.com/retrobrews/c64-games", "author": "PlayOrbit", "size": 174848}
 {"label": "Athanor The Awakening", "system": "c64", "url": "https://raw.githubusercontent.com/retrobrews/c64-games/master/athanor_plus4.d64", "source": "github.com/retrobrews/c64-games", "author": "Megastyle", "size": 174848}

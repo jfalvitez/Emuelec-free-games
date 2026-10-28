@@ -1,3 +1,7 @@
+# Free games list for: Sinclair ZX Spectrum (EmuELEC folder name: zxspectrum)
+# One game per line, written as JSON. Lines that start with # are ignored. Only add free, public-domain or homebrew games that the author lets people share.
+# Accepted file types: .7z .rzx .scl .tap .trd .tzx .z80 .zip
+# {"label": "Game name", "system": "zxspectrum", "url": "https://direct.link/to/the/game/file", "source": "where it comes from", "author": "who made it", "size": 12345}
 {"label": "Break/Space", "system": "zxspectrum", "url": "https://raw.githubusercontent.com/retrobrews/zxspectrum-games/master/breakspace.tap", "source": "github.com/retrobrews/zxspectrum-games", "author": "Blerkotron", "size": 15763}
 {"label": "Cadaverion", "system": "zxspectrum", "url": "https://raw.githubusercontent.com/retrobrews/zxspectrum-games/master/cadaverion.tap", "source": "github.com/retrobrews/zxspectrum-games", "author": "Mojon Twins", "size": 40573}
 {"label": "Cheril of the Bosque", "system": "zxspectrum", "url": "https://raw.githubusercontent.com/retrobrews/zxspectrum-games/master/cherilofthebosque.tzx", "source": "github.com/retrobrews/zxspectrum-games", "author": "Mojon Twins", "size": 37565}

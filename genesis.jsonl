@@ -1,3 +1,7 @@
+# Free games list for: Sega Genesis (EmuELEC folder name: genesis)
+# One game per line, written as JSON. Lines that start with # are ignored. Only add free, public-domain or homebrew games that the author lets people share.
+# Accepted file types: .68k .7z .bin .gen .md .sg .sgd .smd .zip
+# {"label": "Game name", "system": "genesis", "url": "https://direct.link/to/the/game/file", "source": "where it comes from", "author": "who made it", "size": 12345}
 {"label": "Ascii War", "system": "genesis", "url": "https://raw.githubusercontent.com/retrobrews/md-games/master/asciiwar.bin", "source": "github.com/retrobrews/md-games", "author": "ComradeOj", "size": 2387437}
 {"label": "Astronauta Perdido (Lost Astronaut)", "system": "genesis", "url": "https://raw.githubusercontent.com/retrobrews/md-games/master/astroperdido.bin", "source": "github.com/retrobrews/md-games", "author": "Nemezes Games", "size": 184778}
 {"label": "Bare Knuckled Princess", "system": "genesis", "url": "https://raw.githubusercontent.com/retrobrews/md-games/master/bareknuckleprincesss.bin", "source": "github.com/retrobrews/md-games", "author": "OhCarson", "size": 393216}

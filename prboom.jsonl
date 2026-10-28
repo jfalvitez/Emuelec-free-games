@@ -1,0 +1,4 @@
+# Free games list for: Doom (EmuELEC folder name: prboom)
+# One game per line, written as JSON. Lines that start with # are ignored. Only add free, public-domain or homebrew games that the author lets people share.
+# Accepted file types: .doom .iwad .pwad .wad
+# {"label": "Game name", "system": "prboom", "url": "https://direct.link/to/the/game/file", "source": "where it comes from", "author": "who made it", "size": 12345}
